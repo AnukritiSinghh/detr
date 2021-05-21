@@ -158,7 +158,7 @@ def detr_resnet101_panoptic(
     is_thing_map = {i: i <= 90 for i in range(250)}
     if pretrained:
         checkpoint = torch.hub.load_state_dict_from_url(
-            url="https://dl.fbaipublicfiles.com/detr/detr-r101-panoptic-40021d53.pth",
+            url="https://github.com/AnukritiSinghh/checkpoints/blob/master/checkpoint_resume.pth",
             map_location="cpu",
             check_hash=True,
         )
@@ -166,3 +166,26 @@ def detr_resnet101_panoptic(
     if return_postprocessor:
         return model, PostProcessPanoptic(is_thing_map, threshold=threshold)
     return model
+
+#def detr_offroad_resnet101_panoptic(
+#    pretrained=False, num_classes=250, threshold=0.85, return_postprocessor=False
+#):
+#    """
+#    DETR-DC5 R101 with 6 encoder and 6 decoder layers.
+
+#   Achieves 45.1 PQ on COCO val5k.
+
+#   threshold is the minimum confidence required for keeping segments in the prediction
+#    """
+#    model = _make_detr("resnet101", dilation=False, num_classes=num_classes, mask=True)
+#    is_thing_map = {i: i <= 90 for i in range(250)}
+#    if pretrained:
+#        checkpoint = torch.hub.load_state_dict_from_url(
+#            url="https://dl.fbaipublicfiles.com/detr/detr-r101-panoptic-40021d53.pth",
+#            map_location="cpu",
+#            check_hash=True,
+#        )
+#        model.load_state_dict(checkpoint["model"])
+#    if return_postprocessor:
+#        return model, PostProcessPanoptic(is_thing_map, threshold=threshold)
+#    return model
