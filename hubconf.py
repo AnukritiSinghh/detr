@@ -144,7 +144,7 @@ def detr_resnet50_dc5_panoptic(
     return model
 
 
-def detr_resnet101_panoptic(
+def detr_resnet101_offroad(
     pretrained=False, num_classes=250, threshold=0.85, return_postprocessor=False
 ):
     """
